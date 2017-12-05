@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+CNN/output_data
+CNN/lfw
+test.data
+train_and_validation.data
+cnn.h5
