@@ -34,6 +34,36 @@ Zdjęcia zostały podzielone na 3 zbiory: treningowy, walidacyjny i testowy w st
 Następnie zbiór testowy został odseparowany i pozostawiony dopiero do końcowej oceny modelu.
 Trenowanie sieci odbywało się z użyciem zbioru treningowego, natomiast dobór hiperparametrów został zrobiony, przy pomocy
 zbioru walidacyjnego. 
+####  3.3.2 Ekstracja cech za pomocą sieci CNN.
+Do wykonania powyższego zadania wykorzystamy środowisko MATLAB. 
+Estrakcję cech wykonamy na wyżej wymienionym zbiorze danych oraz użyjemy sieci splotowej AlexNet. Jest to sieć przetrenowana i składa się z 25 warstw:
+	 1   'data'     Image Input                   227x227x3 images with 'zerocenter' normalization
+     2   'conv1'    Convolution                   96 11x11x3 convolutions with stride [4  4] and padding [0  0]
+     3   'relu1'    ReLU                          ReLU
+     4   'norm1'    Cross Channel Normalization   cross channel normalization with 5 channels per element
+     5   'pool1'    Max Pooling                   3x3 max pooling with stride [2  2] and padding [0  0]
+     6   'conv2'    Convolution                   256 5x5x48 convolutions with stride [1  1] and padding [2  2]
+     7   'relu2'    ReLU                          ReLU
+     8   'norm2'    Cross Channel Normalization   cross channel normalization with 5 channels per element
+     9   'pool2'    Max Pooling                   3x3 max pooling with stride [2  2] and padding [0  0]
+    10   'conv3'    Convolution                   384 3x3x256 convolutions with stride [1  1] and padding [1  1]
+    11   'relu3'    ReLU                          ReLU
+    12   'conv4'    Convolution                   384 3x3x192 convolutions with stride [1  1] and padding [1  1]
+    13   'relu4'    ReLU                          ReLU
+    14   'conv5'    Convolution                   256 3x3x192 convolutions with stride [1  1] and padding [1  1]
+    15   'relu5'    ReLU                          ReLU
+    16   'pool5'    Max Pooling                   3x3 max pooling with stride [2  2] and padding [0  0]
+    17   'fc6'      Fully Connected               4096 fully connected layer
+    18   'relu6'    ReLU                          ReLU
+    19   'drop6'    Dropout                       50% dropout
+    20   'fc7'      Fully Connected               4096 fully connected layer
+    21   'relu7'    ReLU                          ReLU
+    22   'drop7'    Dropout                       50% dropout
+    23   'fc8'      Fully Connected               1000 fully connected layer
+    24   'prob'     Softmax                       softmax
+    25   'output'   Classification Output         crossentropyex with 'tench', 'goldfish', and 998 other classes
+	
+Uzyskane cechy pobierzemy z ostatniej warstwy przed klasyfikacją. W tym wypadku jest to warstwa 'fc7'.
   
 ####  3.3.2 Architektura sieci
 
