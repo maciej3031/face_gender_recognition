@@ -24,7 +24,18 @@ rozmiar 250x250 pixeli. Położenie twarzy zostało dostosowane w taki sposób, 
 była nie obrócona i o podobnej wielkości na każdym zdjęciu.
 
 ### 3. Spsób rozwiązania  
-####  3.1. MLP    
+####  3.1. MLP
+####  3.1.1 Sposób ekstrakcji cech
+Cechy użyte jako wejścia perceptronu wielowarstwowego uzyskane zostaną za pomocą metody Eingefaces zaimplementowanej w programie matlab. Jest to popularna metoda wywodząca się z teorii informacji korzystająca z analizy składowych głównych PCA w celu zmniejszenia wymiarowości reprezentacji obrazów. W metodzie tej dążymy to pzekształcenia dużego wektora danych skorelowanych, w zbiór parametrów (przy czym będzie to zbiór stosunkowo niewielki) o zróżnicowanej wariancji, dobrze opisujący dany obraz. Jest to metoda  z powodzeniem wykorzystywana do rozpoznawania twarzy.
+####  3.1.2 Dobór parametrów sieci
+W ramach projektu przebadany zostanie wpływ poszczególnych parametrów sieci na jakość klasyfikacji. Wśród badanych przez nas parametrów znajdują się:
+- liczba neuronów w poszczególnych warstwach,
+- liczba warstw ukrytych,
+- rodzaj funkcji aktywacji.
+Badania przeprowadzone zostaną z wykorzystaniem sieci neuronowych zaimplementowanych w Neural Network Toolbox programu Matlab.
+####  3.1.3 Ocena jakości
+Kryterium oceny sieci będzie procent poprawnie zaklasyfikowanych obrazów.
+
 ####  3.2. SVM  
 ####  3.3. CNN  
 ####  3.3.1 Zbiór danych 
