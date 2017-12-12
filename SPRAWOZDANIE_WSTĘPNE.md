@@ -57,7 +57,7 @@ Uzyskane cechy pobierzemy z ostatniej warstwy przed klasyfikacją. W tym wypadku
 
 ####  3.2. MLP
 ####  3.2.1 Sposób ekstrakcji cech
-Cechy użyte jako wejścia perceptronu wielowarstwowego uzyskane zostaną za pomocą metody Eingefaces zaimplementowanej w programie matlab. Jest to popularna metoda wywodząca się z teorii informacji korzystająca z analizy składowych głównych PCA w celu zmniejszenia wymiarowości reprezentacji obrazów. W metodzie tej dążymy to pzekształcenia dużego wektora danych skorelowanych, w zbiór parametrów (przy czym będzie to zbiór stosunkowo niewielki) o zróżnicowanej wariancji, dobrze opisujący dany obraz. Jest to metoda  z powodzeniem wykorzystywana do rozpoznawania twarzy.
+Cechy użyte jako wejścia perceptronu wielowarstwowego uzyskane zostaną za pomocą metody Eingefaces zaimplementowanej w programie matlab. Jest to popularna metoda wywodząca się z teorii informacji korzystająca z analizy składowych głównych PCA w celu zmniejszenia wymiarowości reprezentacji obrazów. W metodzie tej dążymy to przekształcenia dużego wektora danych skorelowanych, w zbiór parametrów (przy czym będzie to zbiór stosunkowo niewielki) o zróżnicowanej wariancji, dobrze opisujący dany obraz. Jest to metoda  z powodzeniem wykorzystywana do rozpoznawania twarzy.
 ####  3.2.2 Dobór parametrów sieci
 W ramach projektu przebadany zostanie wpływ poszczególnych parametrów sieci na jakość klasyfikacji. Wśród badanych przez nas parametrów znajdują się:
 - liczba neuronów w poszczególnych warstwach,
@@ -67,7 +67,41 @@ Badania przeprowadzone zostaną z wykorzystaniem sieci neuronowych zaimplementow
 ####  3.2.3 Ocena jakości
 Kryterium oceny sieci będzie procent poprawnie zaklasyfikowanych obrazów.
 
-####  3.3. SVM  
+###  3.3. SVM (Support Vector Machine)
+#### 3.3.1 Ogólny opis algorytmu
+
+Algorytm SVM jako metoda uczenia nadzorowanego wymaga wytrenowania modelu za pomocą zaklasyfikowanych danych.
+Dzieli ona wielowymiarową przestrzeń na dwie klasy używając tak zwanych wektorów nośnych, które odnoszą się do wzajemnych
+odległości poszczególnych obserwacji. Celem jest by znaleziona hiperpłaszczyzna rozdzielała przestrzeń (która może zostać
+przekształcona za pomocą tzw. funkcji jądra) na dwie, jak najbardziej odseparowane od siebie, klasy.
+
+####  3.3.2 Sposób ekstrakcji cech
+Do ekstrakcji cech z zaproponowanego zbioru danych wykorzystane 2 metody:
+- konwolucyjna sieć neuronowa zaproponowana w punkcie 3.1
+- metoda Eingefaces opisana w punkcie 3.2.1
+
+#### 3.3.3 Sposób wykorzystania zbioru danych
+Zbiór danych zostanie podzielony na zbiór treningowy oraz testujący. Zostaną wykonane eksperymenty dotyczące czasu trenowania
+w zależności od wielkości zbioru trenującego. Przeprowadzony zostanie również eksperyment na zbiorze trenującym
+identycznym do  tego wykorzystanego w MLP i CNN, mający na celu porównanie metod.
+
+Zaproponowany zbiór danych trenujących jest podzielony na dwie klasy (płci: kobieta/mężczyzna). Każdy z obrazów
+ze zbioru zostanie przetworzony narzędziem służącym do ekstrakcji cech a następnie podany do trenowania metodą SVM.
+
+#### 3.3.4 Parametry klasyfikatora
+
+##### Funkcja jądra
+Wskazane metody ekstrakcji danych umożliwiają uzyskanie różnej ilości cech. Zostanie przetestowane kilka
+funkcji jądra w celu znalezienia najlepiej klasyfikującej dany zbiór cech. Dobór cech zostanie dobrany tak
+aby nie było overfittingu.
+
+##### Parametry gamma i współczynnik kary i inne
+Zostanie przetestowany również wpływ tych współczynników na klasyfikację.
+
+#### 3.3.5
+Wykorzystane narzędzia:
+Do esktrakcji cech zostaną wykorzystane przedstawione wcześniej metody (ewentualnie im tożsame biblioteki w Pythone).
+SVM będzie trenowany oraz testowany prze użyciu pakietu scikit-learn Pythona.
 
 ####  3.4. CNN  
 ####  3.4.1 Zbiór danych 
