@@ -105,3 +105,4 @@ CNN/lfw
 test.data
 train_and_validation.data
 cnn.h5
+*.docx
